@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using 
+using System.Threading.Tasks; 
 
 namespace _100_Exercise
 {
@@ -24,7 +23,7 @@ namespace _100_Exercise
                 if (_input_str !=null)
                 try
                 {
-                    _input_int = Int32.Parse(_input_str);
+                    _input_int = int.Parse(_input_str);
                 }
                 catch (FormatException e)
                 {
@@ -34,7 +33,7 @@ namespace _100_Exercise
 
                 if (_input_int >= 0 && _input_int <= 20)
                 {
-                    Int64 calculation = FactorialCalculation(_input_int);
+                    ulong calculation = FactorialCalculation(_input_int);
                     Console.WriteLine("Result of calculation {0:N}! is {1:N}", _input_int.ToString(), calculation.ToString());
 
                     calculation = 0;
@@ -60,7 +59,7 @@ namespace _100_Exercise
             {
                 for (int i=2; i <= _number; i++)
                 {
-                    result = result * i;
+                    result = result * (ulong)i;
                 }   
             }
             else
@@ -79,7 +78,7 @@ namespace _100_Exercise
             }
             else
             {
-                return _number * FactorialCalculation_recursion(_number - 1);
+                return (ulong)_number * FactorialCalculation_recursion(_number - 1);
             }
         }
     }
