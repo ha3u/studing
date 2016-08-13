@@ -14,11 +14,11 @@ namespace _100_Exercise
             string _input_str = null;
             int _input_int=0;
             
-            Console.WriteLine("Enter a natural number from 1 to 200. For stop programm press CTRL+Z");
+            Console.WriteLine("Enter a natural number from 1 to 20. For stop programm press CTRL+Z");
             
             do
             {
-                Console.Write("Number from 1 to 200 >> ");
+                Console.Write("Number from 1 to 20 >> ");
                 _input_str = System.Console.ReadLine();
                 if (_input_str !=null)
                 try
@@ -31,11 +31,16 @@ namespace _100_Exercise
 
                 }
 
-                if (_input_int >= 0 && _input_int <= 200)
+                if (_input_int >= 0 && _input_int <= 20)
                 {
-                    int calculation = FactorialCalculation(_input_int);
-                    Console.WriteLine("Result of calculation {0:N}! is {1:N}", _input_str, calculation.ToString());
-                    
+                    Int64 calculation = FactorialCalculation(_input_int);
+                    Console.WriteLine("Result of calculation {0:N}! is {1:N}", _input_int.ToString(), calculation.ToString());
+
+                    calculation = 0;
+
+                    calculation = FactorialCalculation_recursion (_input_int);
+                    Console.WriteLine("Result of calculation {0:N}! is {1:N}", _input_int.ToString(), calculation.ToString());
+
                 }
                 else
                 {
@@ -47,9 +52,9 @@ namespace _100_Exercise
 
         }
 
-        static private int FactorialCalculation (int _number)
+        static private Int64 FactorialCalculation (int _number)
         {
-            int result = 1;
+            Int64 result = 1;
             if (_number > 1)
             {
                 for (int i=2; i <= _number; i++)
@@ -63,6 +68,19 @@ namespace _100_Exercise
             }
             return result;
 
-        } 
+        }
+
+        static private Int64 FactorialCalculation_recursion(Int64 _number)
+        {
+            if (_number == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return _number * FactorialCalculation_recursion(_number - 1);
+            }
+
+        }
     }
 }
