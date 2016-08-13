@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using 
 
 namespace _100_Exercise
 {
@@ -12,7 +13,7 @@ namespace _100_Exercise
         static void Main(string[] args)
         {
             string _input_str = null;
-            int _input_int=0;
+            int _input_int= new int();
             
             Console.WriteLine("Enter a natural number from 1 to 20. For stop programm press CTRL+Z");
             
@@ -52,9 +53,9 @@ namespace _100_Exercise
 
         }
 
-        static private Int64 FactorialCalculation (int _number)
+        static private ulong FactorialCalculation (int _number)
         {
-            Int64 result = 1;
+            ulong result = 1;
             if (_number > 1)
             {
                 for (int i=2; i <= _number; i++)
@@ -70,7 +71,7 @@ namespace _100_Exercise
 
         }
 
-        static private Int64 FactorialCalculation_recursion(Int64 _number)
+        static private ulong FactorialCalculation_recursion(int _number)
         {
             if (_number == 0)
             {
@@ -80,7 +81,6 @@ namespace _100_Exercise
             {
                 return _number * FactorialCalculation_recursion(_number - 1);
             }
-
         }
     }
 }
