@@ -31,7 +31,7 @@ namespace _100_Exercise
 
                 }
 
-                if (_input_int >= 0 && _input_int <= 20)
+                if (_input_int >= 0 && _input_int <= 200)
                 {
                     ulong calculation = FactorialCalculation(_input_int);
                     Console.WriteLine("Result of calculation {0:N}! is {1:N}", _input_int.ToString(), calculation.ToString());
@@ -59,7 +59,16 @@ namespace _100_Exercise
             {
                 for (int i=2; i <= _number; i++)
                 {
-                    result = result * (ulong)i;
+                    try
+                    {
+                        result = checked(result * (ulong)i);
+                    }
+                    catch (System.OverflowException e)
+                    {
+                        Console.WriteLine("ERROR: " + e.ToString());
+                        Console.WriteLine();
+                        Console.WriteLine("Max number for compute is: " + (i - 1).ToString());
+                    }
                 }   
             }
             else
@@ -78,7 +87,17 @@ namespace _100_Exercise
             }
             else
             {
-                return (ulong)_number * FactorialCalculation_recursion(_number - 1);
+                try
+                {
+                    return checked((ulong)_number * FactorialCalculation_recursion(_number - 1));
+                }
+                catch (System.OverflowException e)
+                {
+                    Console.WriteLine("ERROR: " + e.ToString());
+                    Console.WriteLine();
+                    Console.WriteLine("Max number for compute is: " + _number.ToString());
+                    return 0;
+                }
             }
         }
     }
